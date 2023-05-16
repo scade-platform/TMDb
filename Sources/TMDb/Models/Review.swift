@@ -14,7 +14,7 @@ public struct Review: Identifiable, Decodable, Equatable, Hashable {
       guard let createdAt else {
         return nil
       }
-      return DateFormatter.theMovieDatabase.date(from: createdAt)
+      return DateFormatter.theMovieDatabaseISO8601.date(from: createdAt)
     }
 
     private let createdAt: String?
@@ -32,7 +32,7 @@ public struct Review: Identifiable, Decodable, Equatable, Hashable {
         self.content = content
         self.createdAt = {
           guard let createdAt else { return nil }
-          return DateFormatter.theMovieDatabase.string(from: createdAt)
+          return DateFormatter.theMovieDatabaseISO8601.string(from: createdAt)
         }()
     }
 
