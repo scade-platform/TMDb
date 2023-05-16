@@ -10,14 +10,7 @@ public struct Review: Identifiable, Decodable, Equatable, Hashable {
     /// Review content.
     public let content: String
     /// Review date of creation.
-    public var createdDate: Date? {
-      guard let createdAt else {
-        return nil
-      }
-      return DateFormatter.theMovieDatabase.date(from: createdAt)
-    }
-
-    private let createdAt: String?
+    public let createdAt: String
 
     /// Creates a new `Review`.
     ///
@@ -26,14 +19,11 @@ public struct Review: Identifiable, Decodable, Equatable, Hashable {
     ///    - author: Author of the review.
     ///    - content: Review content.
     ///    - createdAt: Review date of creation.
-    public init(id: String, author: String, content: String, createdAt: Date?) {
+    public init(id: String, author: String, content: String, createdAt: String) {
         self.id = id
         self.author = author
         self.content = content
-        self.createdAt = {
-          guard let createdAt else { return nil }
-          return DateFormatter.theMovieDatabase.string(from: createdAt)
-        }()
+        self.createdAt = createdAt
     }
 
 }
